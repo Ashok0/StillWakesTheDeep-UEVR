@@ -11,7 +11,9 @@ Get the latest release zip and click "Import Config" in UEVR, then browse to the
 ## Features
 * Head bobbing auto disabled.
 * Black bars disabled during cutscenes.
-* Camera is corrected to fix cutscenes and interactions.
+* Camera fixes for cutscenes and interactions.
+* Fixes when examining objects.
 * Player body is hidden but re-enabled for cutscenes and full body events.
+* Fixes for reflections appearing in only one eye.
 * Holding *LT* temporarily disables Roomscale which allows you to lean closely towards objects and walls without any pushback.
 * Press *LT+L3* to calibrate player height.
