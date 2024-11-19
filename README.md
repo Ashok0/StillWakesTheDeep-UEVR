@@ -1,14 +1,14 @@
-# Still Wakes the Deep UEVR Plugin
-UEVR improvements for STILL WAKES THE DEEP (2024)
+## Still Wakes the Deep UEVR Plugin
+UEVR improvements for Still Wakes the Deep (2024)
 
-# Install
+## Install
 Make sure that you are using the very latest NIGHTLY version of UEVR from: https://github.com/praydog/UEVR-nightly/releases/latest/
 
 Delete any previous UEVR profiles for this game.
 
-Get the latest release zip and click "Import Config" in UEVR, browse to the zip and click it.
+Get the latest release zip and click "Import Config" in UEVR, then browse to the zip and click it.
 
-# Features
+## Features
 * Head bobbing auto disabled.
 * Black bars disabled during cutscenes.
 * Camera is corrected to fix cutscenes and interactions.
