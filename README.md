@@ -15,5 +15,5 @@ Get the latest release zip and click "Import Config" in UEVR, then browse to the
 * Fixes when examining objects.
 * Player body is hidden but re-enabled for cutscenes and full body events.
 * Fixes for reflections appearing in only one eye.
-* Holding *LT* temporarily disables Roomscale which allows you to lean closely towards objects and walls without any pushback.
-* Press *LT+L3* to calibrate player height.
+* Holding **LT** temporarily disables Roomscale which allows you to lean closely towards objects and walls without any pushback.
+* Press **LT+L3** to calibrate player height.
