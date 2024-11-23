@@ -128,6 +128,19 @@ public:
                     IsExamining = HC->get_bIsRunningCinematic(); /* Check if examining object */
                 }
 
+                if (IsExamining == true)
+                {
+                    auto& vr = API::get()->param()->vr;
+                    vr->set_mod_value("VR_LerpCameraYaw", "true"); /* Lerp camera to fix Suzie's Letter */
+                    vr->set_mod_value("VR_LerpCameraSpeed", "0.010000");
+                }
+                else if (IsExamining == false)
+                {
+                    auto& vr = API::get()->param()->vr;
+                    vr->set_mod_value("VR_LerpCameraYaw", "false");
+                    vr->set_mod_value("VR_LerpCameraSpeed", "1.000000");                       
+                }
+
                 IsBalancingPrev = IsBalancingCurrent;
                 IsAnimationControllingCameraPrev = IsAnimationControllingCameraCurrent;
 
