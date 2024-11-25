@@ -55,4 +55,14 @@ public:
 	{
 		return get_bool_property(L"IsBalancing");
 	}
+
+	bool get_IsCrouching()
+	{
+		return get_bool_property(L"IsCrouching");
+	}
+
+	bool get_IsCrawling()
+	{
+		return get_bool_property(L"IsCrawling");
+	}
 };

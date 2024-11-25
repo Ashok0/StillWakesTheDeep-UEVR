@@ -16,7 +16,7 @@
 #include "HabitatSavedSettings.hpp"
 #include "PlayerController.hpp"
 
-void reset_height_balancing();
+void reset_height_prone(float threshold);
 void reset_height();
 
 // Instantiate cxxtimer::Timer object
@@ -30,6 +30,10 @@ bool IsCutscenePrev = false;
 bool IsCutsceneCurrent = false;
 bool IsBalancingPrev = false;
 bool IsBalancingCurrent = false;
+bool IsCrouchingPrev = false;
+bool IsCrouchingCurrent = false;
+bool IsCrawlingPrev = false;
+bool IsCrawlingCurrent = false;
 bool IsMouseCursorPrev = false;
 bool IsMouseCursorCurrent = false;
 bool IsAnimationControllingCameraPrev = false;
@@ -142,6 +146,8 @@ public:
                 }
 
                 IsBalancingPrev = IsBalancingCurrent;
+                IsCrouchingPrev = IsCrouchingCurrent;
+                IsCrawlingPrev = IsCrawlingCurrent;
                 IsAnimationControllingCameraPrev = IsAnimationControllingCameraCurrent;
 
                 const auto ABP = ABP_HabitatCharacterDefault_C::get_instance();
@@ -151,15 +157,41 @@ public:
                     IsInteracting = ABP->get_IsInteracting();
                     IsAnimationControllingCameraCurrent = ABP->get_IsAnimationControllingCamera();
                     IsBalancingCurrent = ABP->get_IsBalancing();
+                    IsCrouchingCurrent = ABP->get_IsCrouching();
+                    IsCrawlingCurrent = ABP->get_IsCrawling();
                 }
 
                 if (IsBalancingPrev != IsBalancingCurrent)
                 {
                     if (IsBalancingCurrent == true) /* Adjust height when player is balancing */
                     {
-                        reset_height_balancing();
+                        reset_height_prone(1.0);
                     }
-                    else if (IsBalancingCurrent == false)
+                    else if ((IsBalancingCurrent == false) && (IsCrouchingCurrent == false) && (IsCrawlingCurrent == false))
+                    {
+                        reset_height();
+                    }
+                }
+
+                if (IsCrouchingPrev != IsCrouchingCurrent)
+                {
+                    if (IsCrouchingCurrent == true) /* Adjust height when player is balancing */
+                    {
+                        reset_height_prone(0.5);
+                    }
+                    else if ((IsBalancingCurrent == false) && (IsCrouchingCurrent == false) && (IsCrawlingCurrent == false))
+                    {
+                        reset_height();
+                    }
+                }
+
+                if (IsCrawlingPrev != IsCrawlingCurrent)
+                {
+                    if (IsCrawlingCurrent == true) /* Adjust height when player is balancing */
+                    {
+                        reset_height_prone(1.5);
+                    }
+                    else if ((IsBalancingCurrent == false) && (IsCrouchingCurrent == false) && (IsCrawlingCurrent == false))
                     {
                         reset_height();
                     }
@@ -270,7 +302,7 @@ public:
     }
 };
 
-void reset_height_balancing() {
+void reset_height_prone(float threshold) {
 
     auto& api = API::get();
     auto vr = api->param()->vr;
@@ -281,7 +313,7 @@ void reset_height_balancing() {
     UEVR_Quaternionf hmd_rot{};
     vr->get_pose(vr->get_hmd_index(), &hmd_pos, &hmd_rot);
 
-    origin.y = (hmd_pos.y) + (float)1.0; /* Recalibrate height for balancing animation */
+    origin.y = (hmd_pos.y) + (float)threshold; /* Recalibrate height for balancing, crouching, and crawling */
 
     vr->set_standing_origin(&origin);
 }
