@@ -175,7 +175,7 @@ public:
 
                 if (IsCrouchingPrev != IsCrouchingCurrent)
                 {
-                    if (IsCrouchingCurrent == true) /* Adjust height when player is balancing */
+                    if (IsCrouchingCurrent == true) /* Adjust height when player is crouching */
                     {
                         reset_height_prone(0.5);
                     }
@@ -187,7 +187,7 @@ public:
 
                 if (IsCrawlingPrev != IsCrawlingCurrent)
                 {
-                    if (IsCrawlingCurrent == true) /* Adjust height when player is balancing */
+                    if (IsCrawlingCurrent == true) /* Adjust height when player is crawling */
                     {
                         reset_height_prone(1.5);
                     }
