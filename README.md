@@ -12,6 +12,7 @@ Get the latest release zip and click "Import Config" in UEVR, then browse to the
 * Head bobbing auto disabled.
 * Black bars disabled during cutscenes.
 * Camera fixes for cutscenes and interactions.
+* Height fixes in VR for sequences that involve crouching and crawling.
 * Fixes when examining objects.
 * Player body is hidden but re-enabled for cutscenes and full body events.
 * Fixes for reflections appearing in only one eye.
